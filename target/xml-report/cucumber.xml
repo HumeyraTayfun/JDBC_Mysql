@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="3.075">
+    <testcase classname="UPDATE (update delete insert queryleri)" name="&quot;id=800&quot; olan kullanıcının &quot;is_read=0&quot; olan bildirimlerini '1' Olarak Update edip doğrulayınız." time="2.677">
+        <system-out><![CDATA[* Database baglantisi kurulur...............................................passed
+* Prepared query08 olusturulur ve execute edilir............................passed
+* Prepared query08 Sonuclar dogrulanir......................................passed
+* Database baglantisi kapatilir.............................................passed
+]]></system-out>
+    </testcase>
+</testsuite>

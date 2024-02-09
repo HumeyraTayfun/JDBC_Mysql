@@ -6,13 +6,16 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"html:target/html-reports/rapor.html",
+        plugin = {
+                "html:target/default-cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
-                "junit:target/xml-reports/cucumber.xml"},
-    features = "src/test/resources",
-    glue = "stepDefinitions",
-    tags = " @query4",
-    dryRun = false
+                "junit:target/xml-report/cucumber.xml",
+                "rerun:target/failedRerun.txt"
+        },
+        features = "src/test/resources",
+        glue = {"stepDefinitions"},
+        tags = "@query08",
+        dryRun = false
 )
 
 public class Runner {}
