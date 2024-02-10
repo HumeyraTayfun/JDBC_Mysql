@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -17,25 +17,52 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e46c98fa-bc9d-4f65-aa27-c9f74615a504">
-      <console name="qa_loantec" type="STANDARD" schema="" session="Main"><![CDATA[__Database üzerinde "Users" tablosunda "country_code=TR" olmayan ve "id=11"
+      <console name="qa_loantec" type="STANDARD" schema="u168183796_qaloantec" session="Main"><![CDATA[__Database üzerinde "Users" tablosunda "country_code=TR" olmayan ve "id=11"
 __ olan datanın "firstname" ve "lastname" bilgilerini doğrulayınız.
 
 select firstname,lastname from users
-where country_code NOT like 'TR' and id=11
+where country_code not like 'TR' and id=11
 
 select user_id,group_concat(browser,'- ',os) as browser_os from user_logins group by user_id;
 
 update users set mobile='123456789' where username like '%e_';
-select mobile from users where username like '%e_';]]></console>
+select mobile from users where username like '%e_';
+
+--Database içindeki "deposits" toblosunda  "amount" değeri 100$ ile 500$ arasında olan user_id’leri doğrulayınız
+select user_id  from deposits where amount between 100 and 500;
+select * from deposits;
+
+--Database içindeki "admins" tablosunda "email=info@loantechexper.com"  olan datanın 
+--"remember_token" bilgisini doğrulayınız
+
+select remember_token from admins where email="info@loantechexper.com";
+select * from admins;
+
+--Database içindeki "cron_schedules" tablosunda ilk 2 kaydın "name" bilgisini doğrulayınız
+select name  from cron_schedules limit 2;
+
+--Database içindeki "Deposits" tablosunda "amount" değeri 500.000$ altında olan
+ --datalselect * from admin_password_resets;ardan "trx=4GC9SMZUS69S"olan datanın "charge" değerini doğrulayınız
+ 
+ select * from deposits;
+ select charge,trx from deposits where trx="4GC9SMZUS69S" and amount<5000;
+ --Database içindeki "admin_password_resets" tablosuna aynı anda birden fazla veriyi ekleyiniz.
+ 
+ insert into admin_password_resets (id,email,token,status,created_at) values (?,?,?,?,?);
+
+
+select * from admin_password_resets;
+--Database içindeki "Support_messages" tablosunda "message" bilgisi "merhaba"
+ --olan datanın "support_ticket_id" sini doğrulayınız.
+ select * from support_messages;
+ select support_ticket_id from support_message where message='merhaba';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="e46c98fa-bc9d-4f65-aa27-c9f74615a504" object-ref="consoles/qa_loantec" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="e46c98fa-bc9d-4f65-aa27-c9f74615a504" />
