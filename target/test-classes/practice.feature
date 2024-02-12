@@ -23,5 +23,24 @@ Feature: SELECT QUERY EXECUTE
        * Preparedquery4 Sonuclar dogrulanir.
        * Database baglantisi kapatilir.
 
+       Scenario: US07 Database içindeki "support_tickets" tablosunda  "ticket" değeri
+                  4 ile başlayan dataların "subject" bilgisini doğrulayınız.
+
+
+         * Preparedquery5 olusturulur ve execute edilir.
+         * Preparedquery5 Sonuclar dogrulanir.
+         * Database baglantisi kapatilir.
+
+         Scenario: US09 Database üzerinden "loans" tablosunda "loan_number" girerek istenen datayı siliniz ve
+                  silindiğini doğrulayınız.
+           Given Loans tablosuna insert query hazirlanir ve calistirilir.
+           Then Loans tablosuna insert edilen data silinir.
+           Then Satirin silindigi dogrulanir.
+           Then Database baglantisi kapatilir.
+
+
+
+
+
 
 

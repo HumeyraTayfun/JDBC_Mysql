@@ -55,7 +55,22 @@ select * from admin_password_resets;
 --Database içindeki "Support_messages" tablosunda "message" bilgisi "merhaba"
  --olan datanın "support_ticket_id" sini doğrulayınız.
  select * from support_messages;
- select support_ticket_id from support_message where message='merhaba';]]></console>
+ select support_ticket_id from support_message where message='merhaba';
+
+--Database içindeki "support_tickets" tablosunda  "ticket" değeri  4 ile 
+--başlayan dataların "subject" bilgisini doğrulayınız.
+
+SELECT subject from support_tickets WHERE ticket LIKE '4%';
+select * from support_tickets;
+
+--Database üzerinden "loans" tablosunda "loan_number" girerek istenen datayı siliniz ve 
+--silindiğini doğrulayınız.
+
+delete from loans where loan_number='';
+select * from loans;
+insert into loans (id,loan_number,user_id,plan_id,amount,per_installment,installment_interval,delay_value,charge_per_installment,delay_value,given_installment,total_installment,application_form,admin_feedback,status,due_notification_sent,approved_at,created_at,updated_at) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+
+delete from loans where loan_number=?;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

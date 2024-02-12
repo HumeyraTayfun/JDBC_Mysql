@@ -11,6 +11,10 @@ public class practiseQueryManage {
     private String preparedQuery02="select remember_token from admins where email=?";
     private String preparedQuery3=" insert into admin_password_resets (id,email,token,status,created_at) values (?,?,?,?,?);";
     private String preparedQuery4=" select support_ticket_id from support_message where message=?;";
+    private String preparedQuery5="SELECT subject from support_tickets WHERE ticket LIKE ?;";
+
+    private String preparedInsert6="insert into loans (id,loan_number,user_id) values (?,?,?)";
+    private String praparedDelete6="delete from loans where loan_number=?;";
 
 
 
@@ -30,5 +34,17 @@ public class practiseQueryManage {
 
     public String getPreparedQuery4() {
         return preparedQuery4;
+    }
+
+    public String getPreparedQuery5() {
+        return preparedQuery5;
+    }
+
+    public String getPreparedInsert6() {
+        return preparedInsert6;
+    }
+
+    public String getPraparedDelete6() {
+        return praparedDelete6;
     }
 }
