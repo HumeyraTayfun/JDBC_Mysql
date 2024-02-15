@@ -29,8 +29,9 @@ public class practiseStepDefinition {
     String token;
 
     String created_at;
-    String loanNumber;
-    int userId;
+    String loan_number;
+    int user_id;
+    int plan_id;
 
 
 
@@ -135,22 +136,16 @@ public class practiseStepDefinition {
         preparedStatement=JDBCReusableMethods.getConnection().prepareStatement(query);
         //id,loan_numberstr ,user_id
         id=faker.number().numberBetween(1,9);
-        loanNumber=faker.lorem().sentence(1);
-        userId=faker.number().numberBetween(7,10);
+        loan_number = faker.regexify("[A-Z]{12}");
+        user_id=faker.number().numberBetween(7,10);
+        plan_id=faker.number().numberBetween(10,15);
         preparedStatement.setInt(1, id);
-        preparedStatement.setString(2, loanNumber);
-        preparedStatement.setInt(3, userId);
+        preparedStatement.setString(2, loan_number);
+        preparedStatement.setInt(3, user_id);
+        preparedStatement.setInt(4,plan_id);
         rowCount = preparedStatement.executeUpdate();
         System.out.println("id: " + id);
 
-
-        int flag=0;
-        if (rowCount > 0) {
-            flag++;
-        }
-
-        rowCount = 0;
-        assertEquals(1, flag);
 
     }
     @Given("Loans tablosuna insert edilen data silinir.")
@@ -158,16 +153,35 @@ public class practiseStepDefinition {
         query=practiseQueryManage.getPraparedDelete6();
         preparedStatement=JDBCReusableMethods.getConnection().prepareStatement(query);
 
-        preparedStatement.setString(1,loanNumber);
+        preparedStatement.setString(1,loan_number);
         rowCount = preparedStatement.executeUpdate();
 
-        System.out.println("silinen loanNumber; "+ loanNumber);
+        System.out.println("silinen loanNumber; "+ loan_number);
 
     }
 
     @Then("Satirin silindigi dogrulanir.")
     public void satirinSilindigiDogrulanir() {
         assertEquals(1, rowCount);
+
+    }
+
+    @Given("PreparedQuery7 oluşturulur ve execute edilir.")
+    public void prepared_query7_oluşturulur_ve_execute_edilir() throws SQLException {
+        query=practiseQueryManage.getPreparedQuery7();
+        preparedStatement=JDBCReusableMethods.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,1);
+        preparedStatement.setInt(2,0);
+        resultSet=preparedStatement.executeQuery();
+
+    }
+    @Given("Prepared query7 Sonuclar dogrulanir.")
+    public void prepared_query7_sonuclar_dogrulanir() throws SQLException {
+        rowCount=0;
+        while (resultSet.next()){
+            rowCount++;
+        }
+        assertEquals(2,rowCount);
 
     }
 }

@@ -39,7 +39,11 @@ Feature: SELECT QUERY EXECUTE
            Then Database baglantisi kapatilir.
 
 
-
+          Scenario: US11 Database üzerinde "admin_notifications" tablosunda "user id= 1" ve "is_read=0"olan
+                     kullanıcı sayılarının adedini doğrulayınız.
+            * PreparedQuery7 oluşturulur ve execute edilir.
+            * Prepared query7 Sonuclar dogrulanir.
+            * Database baglantisi kapatilir.
 
 
 

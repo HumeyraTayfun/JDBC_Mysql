@@ -60,7 +60,7 @@ select * from admin_password_resets;
 --Database içindeki "support_tickets" tablosunda  "ticket" değeri  4 ile 
 --başlayan dataların "subject" bilgisini doğrulayınız.
 
-SELECT subject from support_tickets WHERE ticket LIKE '4%';
+select subject from support_tickets where ticket like '4%';
 select * from support_tickets;
 
 --Database üzerinden "loans" tablosunda "loan_number" girerek istenen datayı siliniz ve 
@@ -70,7 +70,13 @@ delete from loans where loan_number='';
 select * from loans;
 insert into loans (id,loan_number,user_id,plan_id,amount,per_installment,installment_interval,delay_value,charge_per_installment,delay_value,given_installment,total_installment,application_form,admin_feedback,status,due_notification_sent,approved_at,created_at,updated_at) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
 
-delete from loans where loan_number=?;]]></console>
+delete from loans where loan_number=?;
+--Database üzerinde "admin_notifications" tablosunda "user id= 1" ve "is_read=0"olan 
+--kullanıcı sayılarının adedini doğrulayınız.
+select * from admin_notifications where user_id=1 and is_read=0;
+
+--"cron_job_logs" tablosuna veri girişi yapıp tabloya eklendiğini doğrulayınız.
+select * from cron_job_logs;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

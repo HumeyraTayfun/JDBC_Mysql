@@ -13,8 +13,9 @@ public class practiseQueryManage {
     private String preparedQuery4=" select support_ticket_id from support_message where message=?;";
     private String preparedQuery5="SELECT subject from support_tickets WHERE ticket LIKE ?;";
 
-    private String preparedInsert6="insert into loans (id,loan_number,user_id) values (?,?,?)";
+    private String preparedInsert6="insert into loans (id,loan_number,user_id,plan_id) values (?,?,?,?)";
     private String praparedDelete6="delete from loans where loan_number=?;";
+    private String preparedQuery7="select * from admin_notifications where user_id=? and is_read=?;";
 
 
 
@@ -46,5 +47,9 @@ public class practiseQueryManage {
 
     public String getPraparedDelete6() {
         return praparedDelete6;
+    }
+
+    public String getPreparedQuery7() {
+        return preparedQuery7;
     }
 }
